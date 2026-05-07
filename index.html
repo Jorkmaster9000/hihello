@@ -4,13 +4,30 @@
 <meta charset="UTF-8">
 <title>Nike Store</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69fc85595532641c37343031/1jo16hpjg';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 <body>
 
     <!-- NAVBAR -->
     <header>
-        <div class="logo">NIKE</div>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike Logo">
+            <span>NIKE</span>
+        </div>
 
         <nav>
             <a href="#">Home</a>
@@ -65,29 +82,60 @@
             <button id="addProductBtn">Add Product</button>
         </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-container">
-            <div>
-                <h3>About</h3>
-                <p>Demo Nike store built by Fish.</p>
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-container">
+
+                <!-- BRAND -->
+                <div class="footer-section">
+                    <h2 class="footer-logo">NIKE</h2>
+                    <p>
+                        Premium sneakers and streetwear inspired by modern culture.
+                    </p>
+
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/nike/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/Nike" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/nike/?locale=vi_VN" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/user/nike" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- SHOP -->
+                <div class="footer-section">
+                    <h3>Shop</h3>
+                    <a href="#">Men</a>
+                    <a href="#">Women</a>
+                    <a href="#">Sneakers</a>
+                    <a href="#">New Arrivals</a>
+                </div>
+
+                <!-- HELP -->
+                <div class="footer-section">
+                    <h3>Help</h3>
+                    <a href="#">Contact</a>
+                    <a href="#">Shipping</a>
+                    <a href="#">Returns</a>
+                    <a href="#">FAQ</a>
+                </div>
+
+                <!-- NEWSLETTER -->
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Get updates on new drops and exclusive offers.</p>
+
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email">
+                        <button>Join</button>
+                    </div>
+                </div>
+
             </div>
 
-            <div>
-                <h3>Help</h3>
-                <p>Contact</p>
-                <p>Shipping</p>
-                <p>Returns</p>
+            <div class="footer-bottom">
+                <p>© 2026 Nike Clone — Built by Fish</p>
             </div>
-
-            <div>
-                <h3>Social</h3>
-                <p>Instagram</p>
-                <p>Twitter</p>
-                <p>Facebook</p>
-            </div>
-        </div>
-
+        </footer>
         <p class="footer-bottom">© 2026 Nike Clone</p>
     </footer>
 
@@ -116,11 +164,14 @@
 
     <div class="cart-footer">
         <p>Total: $<span id="cartTotal">0</span></p>
+
+        <button id="checkoutBtn" class="cart-checkout-btn">
+            Checkout
+        </button>
     </div>
     </div>
 
     <!-- ✅ CHECKOUT BUTTON -->
     <button id="checkoutBtn" class="checkout-btn">Checkout</button>
-    <iframe style="height:100vh;width:100vw" frameBorder="0" src="https://widget.botsonic.com/CDN/index.html?service-base-url=https%3A%2F%2Fapi-bot.writesonic.com&token=f8b66dff-b6c9-4188-8545-78e9f651bcbf&base-origin=https%3A%2F%2Fbot.writesonic.com&instance-name=Botsonic&standalone=true&page-url=https%3A%2F%2Fbot.writesonic.com%2Fbots%2Fb6e4e1c7-a778-4855-bdb9-2822a1870ba1%2Fconnect"></iframe>
 </body>
 </html>
