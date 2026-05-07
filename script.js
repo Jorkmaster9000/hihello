@@ -90,8 +90,9 @@ async function displayFeatured(){
 
   const querySnapshot = await getDocs(collection(db, "products"));
 
-  querySnapshot.forEach(doc => {
-    const product = doc.data();
+  querySnapshot.forEach(d => {
+    const product = d.data();
+    const id = d.id;
 
     if (product.type !== "featured") return;
 
@@ -102,11 +103,25 @@ async function displayFeatured(){
       <img src="${product.img}">
       <h4>${product.name}</h4>
       <p>$${product.price}</p>
-      <button class="add-btn">Add to card</button>
+      <button class="add-btn">Add to Cart</button>
+      <button class="delete-btn">Delete</button>
     `;
+
+    const deleteBtn = card.querySelector(".delete-btn");
+
+    if (auth.currentUser && auth.currentUser.email === ADMIN_EMAIL) {
+      deleteBtn.style.display = "block";
+    } else {
+      deleteBtn.style.display = "none";
+    }
 
     card.querySelector(".add-btn").addEventListener("click", () => {
       addToCart(product);
+    });
+
+    deleteBtn.addEventListener("click", async () => {
+      await deleteDoc(doc(db, "products", id));
+      card.remove();
     });
 
     slider.appendChild(card);
@@ -162,11 +177,8 @@ function renderCart(){
 
   totalEl.innerText = total;
 
-  if(cartItems.length > 0){
-    checkoutBtn.style.display = "block";
-  } else {
-    checkoutBtn.style.display = "none";
-  }
+  checkoutBtn.style.display =
+    cartItems.length > 0 ? "block" : "none";
 }
 
 document.getElementById("checkoutBtn").addEventListener("click", () => {
@@ -367,7 +379,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       // 👉 INSTANTLY add to UI (no reload)
       if (type === "featured") {
-        addFeaturedCard(newProduct);
+        addFeaturedCard(newProduct, docRef.id);
       } else {
         addProductCard(newProduct, docRef.id);
       }
@@ -400,25 +412,5 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     container.appendChild(card);
-  }
-
-  function addFeaturedCard(product){
-    const slider = document.getElementById("slider");
-
-    const card = document.createElement("div");
-    card.classList.add("slider-card");
-
-    card.innerHTML = `
-      <img src="${product.img}">
-      <h4>${product.name}</h4>
-      <p>$${product.price}</p>
-      <button class="add-btn">Add to Cart</button>
-    `;
-
-    card.querySelector(".add-btn").addEventListener("click", () => {
-      addToCart(product);
-    });
-
-    slider.appendChild(card);
   }
 });
